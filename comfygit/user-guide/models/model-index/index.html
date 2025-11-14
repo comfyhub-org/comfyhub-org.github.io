@@ -97,8 +97,8 @@
   "url": "https://docs.comfyhub.org/comfygit/",
   "description": "Version control for ComfyUI environments",
   
-  "datePublished": "2025-11-13 00:51:10Z",
-  "dateModified": "2025-11-13 00:51:10Z",
+  "datePublished": "2025-11-13 06:00:34Z",
+  "dateModified": "2025-11-13 06:00:34Z",
   
   "publisher": {
     "@type": "Organization",
@@ -118,8 +118,8 @@
   "description": "Version control for ComfyUI environments",
   "url": "https://docs.comfyhub.org/comfygit/user-guide/models/model-index/",
   
-  "datePublished": "2025-11-13 00:51:10Z",
-  "dateModified": "2025-11-13 00:51:10Z",
+  "datePublished": "2025-11-13 06:00:34Z",
+  "dateModified": "2025-11-13 06:00:34Z",
   
   "author": {
     "@type": "Organization",
@@ -532,8 +532,6 @@
       
         
       
-        
-      
     
     
     
@@ -652,34 +650,6 @@
     
   
     Core Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../getting-started/migrating-from-v0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Migrating from v0.x
   
 
     
@@ -3982,71 +3952,89 @@
 <h2 id="common-patterns">Common patterns<a class="headerlink" href="#common-patterns" title="Permanent link">&para;</a></h2>
 <h3 id="finding-duplicates">Finding duplicates<a class="headerlink" href="#finding-duplicates" title="Permanent link">&para;</a></h3>
 <p>List all duplicates to save disk space:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Locations (2)&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>list<span class="w"> </span>--duplicates
 </span></code></pre></div>
-<p>Models with multiple locations are duplicates.</p>
+<p><strong>Example output:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>📦 Duplicate models (12 models, 28 files):
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>   sd_xl_base_1.0.safetensors
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>   Size: 6.46 GB
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>   Hash: a1b2c3d4e5f6...
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>   Locations (3):
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>     • /home/user/ComfyUI/models/checkpoints/sd_xl_base_1.0.safetensors
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>     • /home/user/backup/models/checkpoints/sd_xl_base_1.0.safetensors
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>     • /mnt/external/models/sdxl_base.safetensors
+</span></code></pre></div>
+<p>Models with multiple locations are duplicates. The <code>--duplicates</code> flag filters the list to show only models that exist in more than one location.</p>
+<p><strong>Find specific duplicate patterns:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Find triplicates or more</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>list<span class="w"> </span>--duplicates<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Locations ([3-9]&quot;</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Search for anime model duplicates</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>list<span class="w"> </span>--duplicates<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;anime&quot;</span>
+</span></code></pre></div>
 <h3 id="checking-model-availability">Checking model availability<a class="headerlink" href="#checking-model-availability" title="Permanent link">&para;</a></h3>
 <p>Verify a workflow's model exists:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>find<span class="w"> </span><span class="s2">&quot;sd_xl_base_1.0.safetensors&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>find<span class="w"> </span><span class="s2">&quot;sd_xl_base_1.0.safetensors&quot;</span>
 </span></code></pre></div>
 <p>If no results, the model is not indexed (missing or not scanned yet).</p>
 <h3 id="indexing-a-new-models-directory">Indexing a new models directory<a class="headerlink" href="#indexing-a-new-models-directory" title="Permanent link">&para;</a></h3>
 <p>After copying models from another machine:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>dir<span class="w"> </span>/path/to/copied/models
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>dir<span class="w"> </span>/path/to/copied/models
 </span></code></pre></div>
 <p>ComfyGit will index everything in one scan.</p>
 <h3 id="verifying-index-is-up-to-date">Verifying index is up to date<a class="headerlink" href="#verifying-index-is-up-to-date" title="Permanent link">&para;</a></h3>
 <p>Check when the index was last synced:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>status
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>status
 </span></code></pre></div>
 <p>If you've added models since the last sync:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>sync
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>sync
 </span></code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="models-not-showing-up">Models not showing up<a class="headerlink" href="#models-not-showing-up" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Downloaded a model but it's not in the index</p>
 <p><strong>Solutions:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Verify models directory is set</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>status
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1"># Run a manual sync</span>
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>sync
-</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
-</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="c1"># Check if file is in the directory</span>
-</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>ls<span class="w"> </span>~/ComfyUI/models/checkpoints/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Verify models directory is set</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>status
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># Run a manual sync</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>sync
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="c1"># Check if file is in the directory</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>ls<span class="w"> </span>~/ComfyUI/models/checkpoints/
 </span></code></pre></div>
 <h3 id="index-shows-deleted-models">Index shows deleted models<a class="headerlink" href="#index-shows-deleted-models" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Deleted model files but they still appear in index</p>
 <p><strong>Solution:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>sync
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>sync
 </span></code></pre></div>
 <p>Sync removes entries for files that no longer exist.</p>
 <h3 id="multiple-models-found-matching">"Multiple models found matching..."<a class="headerlink" href="#multiple-models-found-matching" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Search returns multiple results</p>
 <p><strong>Solution:</strong></p>
 <p>Use more specific identifier:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Too ambiguous</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>show<span class="w"> </span>anime
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># More specific - use longer hash</span>
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>show<span class="w"> </span>a1b2c3d4e5f6
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
-</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="c1"># Most specific - full hash or exact filename</span>
-</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>show<span class="w"> </span>anime_v2.safetensors
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Too ambiguous</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>show<span class="w"> </span>anime
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># More specific - use longer hash</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>show<span class="w"> </span>a1b2c3d4e5f6
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="c1"># Most specific - full hash or exact filename</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>show<span class="w"> </span>anime_v2.safetensors
 </span></code></pre></div>
 <h3 id="models-directory-doesnt-exist">Models directory doesn't exist<a class="headerlink" href="#models-directory-doesnt-exist" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Set directory but path is invalid</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>✗ Directory does not exist: /path/to/models
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>✗ Directory does not exist: /path/to/models
 </span></code></pre></div>
 <p><strong>Solutions:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Check path spelling</span>
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>ls<span class="w"> </span>/path/to/models
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
-</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># Create directory first</span>
-</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ComfyUI/models
-</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
-</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="c1"># Then set it</span>
-</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>dir<span class="w"> </span>~/ComfyUI/models
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># Check path spelling</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>ls<span class="w"> </span>/path/to/models
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># Create directory first</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ComfyUI/models
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="c1"># Then set it</span>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>dir<span class="w"> </span>~/ComfyUI/models
 </span></code></pre></div>
 <h3 id="slow-indexing">Slow indexing<a class="headerlink" href="#slow-indexing" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Index scan takes a very long time</p>
@@ -4060,15 +4048,15 @@
 </ul>
 <h3 id="no-models-directory-configured">"No models directory configured"<a class="headerlink" href="#no-models-directory-configured" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Trying to list/sync without setting directory</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>✗ No models directory configured
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>   Run &#39;cg model index dir &lt;path&gt;&#39; to set your models directory
+<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>✗ No models directory configured
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>   Run &#39;cg model index dir &lt;path&gt;&#39; to set your models directory
 </span></code></pre></div>
 <p><strong>Solution:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># Set models directory first</span>
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>dir<span class="w"> </span>~/ComfyUI/models
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
-</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># Then list/sync works</span>
-</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>list
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># Set models directory first</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>dir<span class="w"> </span>~/ComfyUI/models
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="c1"># Then list/sync works</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>list
 </span></code></pre></div>
 <h3 id="hash-collision-detected">Hash collision detected<a class="headerlink" href="#hash-collision-detected" title="Permanent link">&para;</a></h3>
 <p><strong>Problem:</strong> Two different files have the same sampled hash (extremely rare)</p>
@@ -4121,7 +4109,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 13, 2025 00:51:10 UTC"><span class="timeago" datetime="2025-11-13T00:51:10+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 13, 2025 00:51:10 UTC">2025-11-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 13, 2025 06:00:34 UTC"><span class="timeago" datetime="2025-11-13T06:00:34+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 13, 2025 06:00:34 UTC">2025-11-13</span>
   </span>
 
     

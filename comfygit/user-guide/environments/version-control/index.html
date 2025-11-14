@@ -97,8 +97,8 @@
   "url": "https://docs.comfyhub.org/comfygit/",
   "description": "Version control for ComfyUI environments",
   
-  "datePublished": "2025-11-13 00:51:10Z",
-  "dateModified": "2025-11-13 00:51:10Z",
+  "datePublished": "2025-11-13 22:46:11Z",
+  "dateModified": "2025-11-13 22:46:11Z",
   
   "publisher": {
     "@type": "Organization",
@@ -118,8 +118,8 @@
   "description": "Version control for ComfyUI environments",
   "url": "https://docs.comfyhub.org/comfygit/user-guide/environments/version-control/",
   
-  "datePublished": "2025-11-13 00:51:10Z",
-  "dateModified": "2025-11-13 00:51:10Z",
+  "datePublished": "2025-11-13 22:46:11Z",
+  "dateModified": "2025-11-13 22:46:11Z",
   
   "author": {
     "@type": "Organization",
@@ -532,8 +532,6 @@
       
         
       
-        
-      
     
     
     
@@ -652,34 +650,6 @@
     
   
     Core Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../getting-started/migrating-from-v0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Migrating from v0.x
   
 
     
@@ -3912,7 +3882,7 @@
 </div>
 <h2 id="viewing-commit-history">Viewing commit history<a class="headerlink" href="#viewing-commit-history" title="Permanent link">&para;</a></h2>
 <h3 id="compact-format-default">Compact format (default)<a class="headerlink" href="#compact-format-default" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cg<span class="w"> </span>commit<span class="w"> </span>log
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cg<span class="w"> </span>log
 </span></code></pre></div>
 <p><strong>Output:</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Version history for environment &#39;my-env&#39;:
@@ -3925,7 +3895,7 @@
 </span></code></pre></div>
 <h3 id="verbose-format">Verbose format<a class="headerlink" href="#verbose-format" title="Permanent link">&para;</a></h3>
 <p>See full details:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cg<span class="w"> </span>commit<span class="w"> </span>log<span class="w"> </span>--verbose
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cg<span class="w"> </span>log<span class="w"> </span>--verbose
 </span></code></pre></div>
 <p><strong>Output:</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Version history for environment &#39;my-env&#39;:
@@ -3970,7 +3940,7 @@
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Uncommitted changes have been discarded
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>• Environment is now clean and matches the last commit
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>• Run &#39;cg commit log&#39; to see version history
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>• Run &#39;cg log&#39; to see version history
 </span></code></pre></div>
 <p><strong>Skip confirmation:</strong></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>cg<span class="w"> </span>rollback<span class="w"> </span>--yes
@@ -3997,7 +3967,7 @@
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>Environment is now at version v2
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>• Run &#39;cg commit -m &quot;message&quot;&#39; to save any new changes
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>• Run &#39;cg commit log&#39; to see version history
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>• Run &#39;cg log&#39; to see version history
 </span></code></pre></div>
 <p><strong>What happens:</strong></p>
 <ol>
@@ -4372,7 +4342,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 13, 2025 00:51:10 UTC"><span class="timeago" datetime="2025-11-13T00:51:10+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 13, 2025 00:51:10 UTC">2025-11-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 13, 2025 22:46:11 UTC"><span class="timeago" datetime="2025-11-13T22:46:11+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 13, 2025 22:46:11 UTC">2025-11-13</span>
   </span>
 
     

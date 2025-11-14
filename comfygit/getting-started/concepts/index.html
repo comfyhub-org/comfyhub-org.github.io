@@ -16,7 +16,7 @@
         <link rel="prev" href="../quickstart/">
       
       
-        <link rel="next" href="../migrating-from-v0/">
+        <link rel="next" href="../../user-guide/workspaces/">
       
       
         
@@ -97,8 +97,8 @@
   "url": "https://docs.comfyhub.org/comfygit/",
   "description": "Version control for ComfyUI environments",
   
-  "datePublished": "2025-11-13 00:51:10Z",
-  "dateModified": "2025-11-13 00:51:10Z",
+  "datePublished": "2025-11-13 22:46:11Z",
+  "dateModified": "2025-11-13 22:46:11Z",
   
   "publisher": {
     "@type": "Organization",
@@ -118,8 +118,8 @@
   "description": "Version control for ComfyUI environments",
   "url": "https://docs.comfyhub.org/comfygit/getting-started/concepts/",
   
-  "datePublished": "2025-11-13 00:51:10Z",
-  "dateModified": "2025-11-13 00:51:10Z",
+  "datePublished": "2025-11-13 22:46:11Z",
+  "dateModified": "2025-11-13 22:46:11Z",
   
   "author": {
     "@type": "Organization",
@@ -534,8 +534,6 @@
       
         
       
-        
-      
     
     
     
@@ -845,6 +843,17 @@
     <span class="md-ellipsis">
       
         pyproject.toml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works together
       
     </span>
   </a>
@@ -1176,34 +1185,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../migrating-from-v0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Migrating from v0.x
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3315,6 +3296,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#how-it-works-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works together
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#why-cec" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3791,28 +3783,93 @@
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>└── .git/                         # Git history
 </span></code></pre></div>
 <h3 id="pyprojecttoml">pyproject.toml<a class="headerlink" href="#pyprojecttoml" title="Permanent link">&para;</a></h3>
-<p>The main configuration file tracking:</p>
-<p><strong>Custom nodes:</strong></p>
-<div class="language-toml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[project.optional-dependencies]</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s2">&quot;node/comfyui-manager&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;GitPython&gt;=3.1.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;packaging&gt;=23.0&quot;</span><span class="p">]</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s2">&quot;node/comfyui-impact-pack&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ultralytics&gt;=8.0.0&quot;</span><span class="p">]</span>
+<p>The main configuration file with several key sections:</p>
+<p><strong>Project dependencies (ComfyUI core):</strong></p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[project]</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;comfygit-env-my-project&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;=3.12&quot;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="s2">&quot;torch&quot;</span><span class="p">,</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="s2">&quot;torchvision&quot;</span><span class="p">,</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="s2">&quot;pillow&quot;</span><span class="p">,</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="s2">&quot;numpy&gt;=1.25.0&quot;</span><span class="p">,</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="c1"># ... ComfyUI&#39;s core dependencies</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="p">]</span>
 </span></code></pre></div>
-<p><strong>Model references:</strong></p>
-<div class="language-toml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">[tool.comfygit.models]</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">checkpoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="s2">&quot;checkpoints/sd15.safetensors:blake3:abc123...&quot;</span><span class="p">,</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">]</span>
+<p><strong>ComfyGit metadata:</strong></p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">[tool.comfygit]</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">comfyui_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;v0.3.68&quot;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">python_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span>
 </span></code></pre></div>
-<p><strong>Development nodes:</strong></p>
-<div class="language-toml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">[tool.comfygit.dev-nodes]</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">my-custom-node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../my-custom-node&quot;</span><span class="w">  </span><span class="c1"># Local path</span>
+<p><strong>Node registry (installed nodes):</strong></p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">[tool.comfygit.nodes.comfyui-impact-pack]</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ComfyUI-Impact-Pack&quot;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">registry_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;comfyui-impact-pack&quot;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">repository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://github.com/ltdrdata/ComfyUI-Impact-Pack&quot;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5.5.0&quot;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">download_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://cdn.comfy.org/ltdrdata/comfyui-impact-pack/5.5.0/node.zip&quot;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;registry&quot;</span>
 </span></code></pre></div>
+<p><strong>Node dependencies (per-node packages):</strong></p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">[dependency-groups]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">comfyui-impact-pack-a1b2c3d4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="s2">&quot;ultralytics&gt;=8.0.0&quot;</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="s2">&quot;onnxruntime&gt;=1.15.0&quot;</span><span class="p">,</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">]</span>
+</span></code></pre></div>
+<p><strong>Model hash registry:</strong></p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">[tool.comfygit.models]</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">0b222b1d568748dc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision_h.safetensors&quot;</span><span class="err">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1264219396</span><span class="err">,</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="n">relative_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision/clip_vision_h.safetensors&quot;</span><span class="err">,</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision&quot;</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="err">}</span>
+</span></code></pre></div>
+<p><strong>Workflow tracking:</strong></p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">[tool.comfygit.workflows.my-workflow]</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;comfyui-impact-pack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;comfyui-ipadapter&quot;</span><span class="p">]</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;workflows/my-workflow.json&quot;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">[[tool.comfygit.workflows.my-workflow.models]]</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision_h.safetensors&quot;</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision&quot;</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">criticality</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;required&quot;</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;resolved&quot;</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="n">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0b222b1d568748dc&quot;</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="n">node_id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node_type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;CLIPVisionLoader&quot;</span><span class="p">}]</span>
+</span></code></pre></div>
+<p><strong>PyTorch backend configuration:</strong></p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">[tool.uv]</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">constraint-dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;torch==2.9.1+cu129&quot;</span><span class="p">]</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">[[tool.uv.index]]</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pytorch-cu129&quot;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://download.pytorch.org/whl/cu129&quot;</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">explicit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">[tool.uv.sources.torch]</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pytorch-cu129&quot;</span>
+</span></code></pre></div>
+<h3 id="how-it-works-together">How it works together<a class="headerlink" href="#how-it-works-together" title="Permanent link">&para;</a></h3>
+<p>Each section serves a specific purpose:</p>
+<ul>
+<li><strong><code>[project]</code></strong> — Core ComfyUI dependencies (torch, pillow, numpy, etc.)</li>
+<li><strong><code>[tool.comfygit]</code></strong> — Environment metadata (ComfyUI version, Python version)</li>
+<li><strong><code>[tool.comfygit.nodes.*]</code></strong> — Registry of installed nodes with versions and sources</li>
+<li><strong><code>[dependency-groups]</code></strong> — Per-node Python dependencies (PEP 735)</li>
+<li><strong><code>[tool.comfygit.workflows.*]</code></strong> — Workflow dependencies and model requirements</li>
+<li><strong><code>[tool.comfygit.models]</code></strong> — Content-addressable model index (hash → metadata)</li>
+<li><strong><code>[tool.uv]</code></strong> — PyTorch backend constraints and custom indexes</li>
+</ul>
 <h3 id="why-cec">Why .cec?<a class="headerlink" href="#why-cec" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Standard format</strong> — Uses pyproject.toml, the Python standard</li>
 <li><strong>Human readable</strong> — Edit manually if needed</li>
 <li><strong>Git-friendly</strong> — Track changes over time</li>
 <li><strong>Lockfile included</strong> — uv.lock ensures exact reproducibility</li>
+<li><strong>Content-addressable</strong> — Models tracked by hash, not path</li>
 </ul>
 <h2 id="reproducibility-model">Reproducibility model<a class="headerlink" href="#reproducibility-model" title="Permanent link">&para;</a></h2>
 <p>ComfyGit uses a <strong>two-tier approach</strong> to reproducibility:</p>
@@ -3825,14 +3882,14 @@
 <li>Workflow files</li>
 </ul>
 <p><strong>Commands:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Save current state</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cg<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Added IPAdapter nodes&quot;</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># View history</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>cg<span class="w"> </span>commit<span class="w"> </span>log
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Restore previous version</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>cg<span class="w"> </span>rollback<span class="w"> </span>v1
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Save current state</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>cg<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Added IPAdapter nodes&quot;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># View history</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>cg<span class="w"> </span>log
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Restore previous version</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>cg<span class="w"> </span>rollback<span class="w"> </span>v1
 </span></code></pre></div>
 <p><strong>When to use:</strong></p>
 <ul>
@@ -3850,11 +3907,11 @@
 <li>Tracked workflow files</li>
 </ul>
 <p><strong>Commands:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Export environment</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>cg<span class="w"> </span><span class="nb">export</span><span class="w"> </span>my-workflow.tar.gz
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Import on another machine</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>cg<span class="w"> </span>import<span class="w"> </span>my-workflow.tar.gz<span class="w"> </span>--name<span class="w"> </span>imported-env
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Export environment</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>cg<span class="w"> </span><span class="nb">export</span><span class="w"> </span>my-workflow.tar.gz
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Import on another machine</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>cg<span class="w"> </span>import<span class="w"> </span>my-workflow.tar.gz<span class="w"> </span>--name<span class="w"> </span>imported-env
 </span></code></pre></div>
 <p><strong>When to use:</strong></p>
 <ul>
@@ -3864,36 +3921,30 @@
 <li>Distributing workflows to users</li>
 </ul>
 <h3 id="how-they-work-together">How they work together<a class="headerlink" href="#how-they-work-together" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>┌─────────────────────────────────────────────┐
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>│  Your Machine                               │
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>│  ┌─────────────────────────────────────┐   │
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>│  │  Environment                        │   │
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>│  │  - Custom nodes                     │   │
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>│  │  - Models                           │   │
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>│  │  - Workflows                        │   │
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>│  └─────────────────────────────────────┘   │
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>│           │                 │               │
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>│           │ commit          │ export        │
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>│           ↓                 ↓               │
-</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>│  ┌──────────────┐  ┌──────────────────┐   │
-</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>│  │ .cec/.git/   │  │ .tar.gz package  │───┼─→ Share
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>│  │ (commits)    │  │ (complete env)   │   │
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>│  └──────────────┘  └──────────────────┘   │
-</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>│           │                                 │
-</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>│           │ push/pull                       │
-</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>│           ↓                                 │
-</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>│  ┌──────────────────────┐                  │
-</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>│  │ Git Remote (GitHub)  │                  │
-</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>│  └──────────────────────┘                  │
-</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>└─────────────────────────────────────────────┘
-</span></code></pre></div>
+<pre class="mermaid"><code>graph TB
+    subgraph machine["Your Machine"]
+        env["Environment&lt;br/&gt;• Custom nodes&lt;br/&gt;• Models&lt;br/&gt;• Workflows"]
+
+        env --&gt;|commit| git[".cec/.git/&lt;br/&gt;(commits)"]
+        env --&gt;|export| tar[".tar.gz package&lt;br/&gt;(complete env)"]
+
+        git --&gt;|push/pull| remote["Git Remote&lt;br/&gt;(GitHub)"]
+    end
+
+    tar -.-&gt;|share| share["Share with others"]
+
+    style env fill:#1e40af,stroke:#3b82f6,stroke-width:2px,color:#fff
+    style git fill:#059669,stroke:#10b981,stroke-width:2px,color:#fff
+    style tar fill:#7c3aed,stroke:#a78bfa,stroke-width:2px,color:#fff
+    style remote fill:#dc2626,stroke:#ef4444,stroke-width:2px,color:#fff
+    style share fill:#6b7280,stroke:#9ca3af,stroke-width:2px,color:#fff</code></pre>
 <h2 id="model-management">Model management<a class="headerlink" href="#model-management" title="Permanent link">&para;</a></h2>
 <p>ComfyGit uses a <strong>content-addressable model index</strong> to solve path-dependency issues.</p>
 <h3 id="the-problem">The problem<a class="headerlink" href="#the-problem" title="Permanent link">&para;</a></h3>
 <p>ComfyUI workflows reference models by path:</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">&quot;ckpt_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;checkpoints/sd15.safetensors&quot;</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="nt">&quot;ckpt_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;checkpoints/sd15.safetensors&quot;</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>But different users have different folder structures:</p>
 <ul>
@@ -3902,58 +3953,116 @@
 <li><code>/mnt/storage/comfyui/checkpoints/sd15.safetensors</code></li>
 </ul>
 <h3 id="comfygits-solution">ComfyGit's solution<a class="headerlink" href="#comfygits-solution" title="Permanent link">&para;</a></h3>
-<p>Models are indexed by <strong>hash</strong> (Blake3), not path:</p>
+<p>Models are indexed by <strong>hash</strong> (custom type), not path:</p>
 <ol>
 <li>Scan your models directory</li>
 <li>Compute quick hash for each model</li>
 <li>Store in workspace-wide database</li>
-<li>Workflows reference models by hash</li>
+<li>Track models in pyproject.toml by hash</li>
+<li>Link workflows to models via hash references</li>
 <li>ComfyGit resolves hash → actual file path</li>
 </ol>
+<p><strong>In pyproject.toml:</strong></p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Global model registry (hash → metadata)</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">[tool.comfygit.models]</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">0b222b1d568748dc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision_h.safetensors&quot;</span><span class="err">,</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1264219396</span><span class="err">,</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="n">relative_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision/clip_vision_h.safetensors&quot;</span><span class="err">,</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision&quot;</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="err">}</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="c1"># Workflow-specific model requirements</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="k">[[tool.comfygit.workflows.my-workflow.models]]</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision_h.safetensors&quot;</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;clip_vision&quot;</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="n">criticality</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;required&quot;</span><span class="w">  </span><span class="c1"># or &quot;flexible&quot; or &quot;optional&quot;</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;resolved&quot;</span><span class="w">       </span><span class="c1"># or &quot;unresolved&quot; or &quot;download_intent&quot;</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="n">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0b222b1d568748dc&quot;</span><span class="w">  </span><span class="c1"># Links to registry above</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="n">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="n">node_id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node_type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;CLIPVisionLoader&quot;</span><span class="p">}]</span>
+</span></code></pre></div>
+<p>The <strong>criticality</strong> field indicates:</p>
+<ul>
+<li><strong>required</strong> — Workflow won't work without it</li>
+<li><strong>flexible</strong> — Can substitute with similar models</li>
+<li><strong>optional</strong> — Nice to have but not critical</li>
+</ul>
+<p>The <strong>status</strong> field tracks:</p>
+<ul>
+<li><strong>resolved</strong> — Model found in workspace</li>
+<li><strong>unresolved</strong> — Model not found, needs download</li>
+<li><strong>download_intent</strong> — Queued for download</li>
+</ul>
 <h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
 <p><strong>Indexing models:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Point to your existing models</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>dir<span class="w"> </span>/path/to/models
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Scan and index</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>sync
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Point to your existing models</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>dir<span class="w"> </span>/path/to/models
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Manually scan and index</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>cg<span class="w"> </span>model<span class="w"> </span>index<span class="w"> </span>sync
 </span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Auto index syncing</p>
+<p>The model index automatically syncs before environment 
+commands to ensure fresh model data. This happens transparently
+in the background and is optimized using modification time 
+checks, so it's fast when models haven't changed. Manual 
+syncing with 'cg model index sync' is only needed if you want 
+to force a full rescan.</p>
+</div>
 <p><strong>Workflow resolution:</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Resolve workflow dependencies</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>cg<span class="w"> </span>workflow<span class="w"> </span>resolve<span class="w"> </span>my-workflow.json
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Resolve workflow dependencies</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>cg<span class="w"> </span>workflow<span class="w"> </span>resolve<span class="w"> </span>my-workflow.json
 </span></code></pre></div>
 <p>ComfyGit will:</p>
 <ol>
-<li>Extract model hashes from workflow</li>
-<li>Look up in global index</li>
-<li>Symlink from <code>workspace/models/</code> to <code>environment/ComfyUI/models/</code></li>
+<li>Extract model references from workflow JSON</li>
+<li>Compute hashes and look up in global index</li>
+<li>Store model requirements in <code>[tool.comfygit.workflows.*]</code></li>
+<li>Track which nodes use each model</li>
+<li>Symlink from <code>workspace/models/</code> (or custom defined models directory) to <code>environment/ComfyUI/models/</code></li>
 <li>Download missing models from known sources</li>
 </ol>
+<p><strong>Workflow tracking benefits:</strong></p>
+<p>When you commit a workflow, ComfyGit records:</p>
+<ul>
+<li>Which custom nodes are required</li>
+<li>Which models are used (by hash, not path)</li>
+<li>Model criticality levels for portability</li>
+<li>Exact node usage (node ID, type, widget position)</li>
+<li>Resolution status</li>
+</ul>
+<p>This makes workflows <strong>truly portable</strong> — anyone importing your environment gets complete dependency information.</p>
 <h3 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Path-independent</strong> — Works regardless of folder structure</li>
 <li><strong>Deduplication</strong> — Same model used by multiple environments</li>
 <li><strong>Source tracking</strong> — Remember where models came from (CivitAI, HuggingFace)</li>
 <li><strong>Fast lookups</strong> — SQLite database for quick queries</li>
+<li><strong>Criticality levels</strong> — Know which models are essential vs optional</li>
+<li><strong>Node tracking</strong> — See exactly where each model is used in workflows</li>
 </ul>
 <h3 id="model-importance">Model importance<a class="headerlink" href="#model-importance" title="Permanent link">&para;</a></h3>
 <p>Mark models in workflows as required/flexible/optional:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Required - workflow won&#39;t work without it</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>cg<span class="w"> </span>workflow<span class="w"> </span>model<span class="w"> </span>importance<span class="w"> </span>my-workflow<span class="w"> </span>checkpoint.safetensors<span class="w"> </span>required
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Flexible - can substitute with similar models</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>cg<span class="w"> </span>workflow<span class="w"> </span>model<span class="w"> </span>importance<span class="w"> </span>my-workflow<span class="w"> </span>style-lora.safetensors<span class="w"> </span>flexible
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Optional - nice to have but not critical</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>cg<span class="w"> </span>workflow<span class="w"> </span>model<span class="w"> </span>importance<span class="w"> </span>my-workflow<span class="w"> </span>detail-lora.safetensors<span class="w"> </span>optional
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Run interactively</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>cg<span class="w"> </span>workflow<span class="w"> </span>model<span class="w"> </span>importance
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Required - workflow won&#39;t work without it</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>cg<span class="w"> </span>workflow<span class="w"> </span>model<span class="w"> </span>importance<span class="w"> </span>my-workflow<span class="w"> </span>checkpoint.safetensors<span class="w"> </span>required
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Flexible - can substitute with similar models</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>cg<span class="w"> </span>workflow<span class="w"> </span>model<span class="w"> </span>importance<span class="w"> </span>my-workflow<span class="w"> </span>style-lora.safetensors<span class="w"> </span>flexible
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="c1"># Optional - nice to have but not critical</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>cg<span class="w"> </span>workflow<span class="w"> </span>model<span class="w"> </span>importance<span class="w"> </span>my-workflow<span class="w"> </span>detail-lora.safetensors<span class="w"> </span>optional
 </span></code></pre></div>
 <p>This helps when sharing workflows or importing on different machines. See <a href="../../user-guide/workflows/workflow-model-importance/">Workflow Model Importance</a> for details.</p>
 <h2 id="node-resolution">Node resolution<a class="headerlink" href="#node-resolution" title="Permanent link">&para;</a></h2>
 <p>ComfyGit resolves custom nodes through multiple sources:</p>
 <h3 id="1-comfyui-registry">1. ComfyUI Registry<a class="headerlink" href="#1-comfyui-registry" title="Permanent link">&para;</a></h3>
 <p>The official registry of custom nodes:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Add by registry ID</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>comfyui-depthflow-nodes
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Add by registry ID</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>comfyui-depthflow-nodes
 </span></code></pre></div>
 <p>ComfyGit queries the registry for:</p>
 <ul>
@@ -3963,19 +4072,19 @@
 </ul>
 <h3 id="2-github-urls">2. GitHub URLs<a class="headerlink" href="#2-github-urls" title="Permanent link">&para;</a></h3>
 <p>Direct from GitHub:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Latest commit</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>https://github.com/akatz-ai/ComfyUI-AKatz-Nodes
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Specific version</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>https://github.com/akatz-ai/ComfyUI-AKatz-Nodes@v1.0.0
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1"># Specific commit</span>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>https://github.com/akatz-ai/ComfyUI-AKatz-Nodes@abc123
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Latest commit</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>https://github.com/akatz-ai/ComfyUI-AKatz-Nodes
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># Specific version</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>https://github.com/akatz-ai/ComfyUI-AKatz-Nodes@v1.0.0
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1"># Specific commit</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>https://github.com/akatz-ai/ComfyUI-AKatz-Nodes@abc123
 </span></code></pre></div>
 <h3 id="3-development-nodes">3. Development nodes<a class="headerlink" href="#3-development-nodes" title="Permanent link">&para;</a></h3>
 <p>Local nodes you're developing:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Track local node</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>/path/to/my-node<span class="w"> </span>--dev
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Track local node</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>/path/to/my-node<span class="w"> </span>--dev
 </span></code></pre></div>
 <p>This creates a symbolic link and tracks the path in pyproject.toml.</p>
 <h3 id="4-workflow-based-resolution">4. Workflow-based resolution<a class="headerlink" href="#4-workflow-based-resolution" title="Permanent link">&para;</a></h3>
@@ -3988,73 +4097,75 @@
 </ol>
 <h2 id="dependency-isolation">Dependency isolation<a class="headerlink" href="#dependency-isolation" title="Permanent link">&para;</a></h2>
 <p>Each custom node gets its own dependency group in pyproject.toml:</p>
-<div class="language-toml highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">[project.optional-dependencies]</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="s2">&quot;node/comfyui-depthflow-nodes&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="s2">&quot;opencv-python&gt;=4.0.0&quot;</span><span class="p">,</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="s2">&quot;numpy&gt;=1.24.0&quot;</span>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="p">]</span>
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="s2">&quot;node/comfyui-impact-pack&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="s2">&quot;ultralytics&gt;=8.0.0&quot;</span><span class="p">,</span>
-</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">    </span><span class="s2">&quot;onnxruntime&gt;=1.15.0&quot;</span>
-</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="p">]</span>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">[dependency-groups]</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">comfyui-depthflow-nodes-a1b2c3d4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="s2">&quot;opencv-python&gt;=4.0.0&quot;</span><span class="p">,</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="s2">&quot;numpy&gt;=1.24.0&quot;</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="p">]</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="n">comfyui-impact-pack-e5f6g7h8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">    </span><span class="s2">&quot;ultralytics&gt;=8.0.0&quot;</span><span class="p">,</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">    </span><span class="s2">&quot;onnxruntime&gt;=1.15.0&quot;</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="p">]</span>
 </span></code></pre></div>
+<p>ComfyGit uses <strong>PEP 735 dependency groups</strong> (not optional-dependencies) for better isolation. Each group has a unique hash suffix to prevent naming conflicts.</p>
 <h3 id="benefits_1">Benefits<a class="headerlink" href="#benefits_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Conflict detection</strong> — UV reports if nodes have incompatible deps</li>
 <li><strong>Selective installation</strong> — Install only what you need</li>
 <li><strong>Clean removal</strong> — Remove node and its unique dependencies</li>
+<li><strong>Hash-based naming</strong> — Prevents collisions between similarly-named nodes</li>
 </ul>
 <h3 id="handling-conflicts">Handling conflicts<a class="headerlink" href="#handling-conflicts" title="Permanent link">&para;</a></h3>
 <p>If two nodes require incompatible versions:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># ComfyGit detects conflict</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>✗<span class="w"> </span>Dependency<span class="w"> </span>conflict<span class="w"> </span>detected:
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span>-<span class="w"> </span>comfyui-depthflow-nodes<span class="w"> </span>requires<span class="w"> </span>torch&gt;<span class="o">=</span><span class="m">2</span>.0,&lt;<span class="m">2</span>.1
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span>-<span class="w"> </span>comfyui-video<span class="w"> </span>requires<span class="w"> </span>torch&gt;<span class="o">=</span><span class="m">2</span>.1
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>Options:
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">  </span><span class="m">1</span>.<span class="w"> </span>Skip<span class="w"> </span>comfyui-video
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">  </span><span class="m">2</span>.<span class="w"> </span>Use<span class="w"> </span>constraint<span class="w"> </span>to<span class="w"> </span>force<span class="w"> </span>version
-</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">  </span><span class="m">3</span>.<span class="w"> </span>Contact<span class="w"> </span>node<span class="w"> </span>maintainer
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># ComfyGit detects conflict</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>✗<span class="w"> </span>Dependency<span class="w"> </span>conflict<span class="w"> </span>detected:
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span>-<span class="w"> </span>comfyui-depthflow-nodes<span class="w"> </span>requires<span class="w"> </span>torch&gt;<span class="o">=</span><span class="m">2</span>.0,&lt;<span class="m">2</span>.1
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">  </span>-<span class="w"> </span>comfyui-video<span class="w"> </span>requires<span class="w"> </span>torch&gt;<span class="o">=</span><span class="m">2</span>.1
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>Options:
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">  </span><span class="m">1</span>.<span class="w"> </span>Skip<span class="w"> </span>comfyui-video
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">  </span><span class="m">2</span>.<span class="w"> </span>Use<span class="w"> </span>constraint<span class="w"> </span>to<span class="w"> </span>force<span class="w"> </span>version
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">  </span><span class="m">3</span>.<span class="w"> </span>Contact<span class="w"> </span>node<span class="w"> </span>maintainer
 </span></code></pre></div>
 <p>Use constraints to override:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>cg<span class="w"> </span>constraint<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;torch==2.4.1&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>cg<span class="w"> </span>constraint<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;torch==2.4.1&quot;</span>
 </span></code></pre></div>
 <h2 id="python-dependencies">Python dependencies<a class="headerlink" href="#python-dependencies" title="Permanent link">&para;</a></h2>
 <p>ComfyGit uses UV for Python package management:</p>
 <h3 id="adding-dependencies">Adding dependencies<a class="headerlink" href="#adding-dependencies" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Add package</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>cg<span class="w"> </span>py<span class="w"> </span>add<span class="w"> </span>requests
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># Add with version constraint</span>
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>cg<span class="w"> </span>py<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;numpy&gt;=1.24,&lt;2.0&quot;</span>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># Add from requirements.txt</span>
-</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>cg<span class="w"> </span>py<span class="w"> </span>add<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Add package</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>cg<span class="w"> </span>py<span class="w"> </span>add<span class="w"> </span>requests
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1"># Add with version constraint</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>cg<span class="w"> </span>py<span class="w"> </span>add<span class="w"> </span><span class="s2">&quot;numpy&gt;=1.24,&lt;2.0&quot;</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="c1"># Add from requirements.txt</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>cg<span class="w"> </span>py<span class="w"> </span>add<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </span></code></pre></div>
 <h3 id="listing-dependencies">Listing dependencies<a class="headerlink" href="#listing-dependencies" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Show project dependencies</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>cg<span class="w"> </span>py<span class="w"> </span>list
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Show all (including transitive)</span>
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>cg<span class="w"> </span>py<span class="w"> </span>list<span class="w"> </span>--all
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Show project dependencies</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>cg<span class="w"> </span>py<span class="w"> </span>list
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># Show all (including transitive)</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>cg<span class="w"> </span>py<span class="w"> </span>list<span class="w"> </span>--all
 </span></code></pre></div>
 <h3 id="removing-dependencies">Removing dependencies<a class="headerlink" href="#removing-dependencies" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cg<span class="w"> </span>py<span class="w"> </span>remove<span class="w"> </span>numpy
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>cg<span class="w"> </span>py<span class="w"> </span>remove<span class="w"> </span>numpy
 </span></code></pre></div>
 <h2 id="active-environment">Active environment<a class="headerlink" href="#active-environment" title="Permanent link">&para;</a></h2>
 <p>ComfyGit tracks which environment is currently active:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Set active</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>cg<span class="w"> </span>use<span class="w"> </span>my-project
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Commands use active env by default</span>
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>cg<span class="w"> </span>run
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>cg<span class="w"> </span>status
-</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>comfyui-depthflow-nodes
-</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
-</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="c1"># Or specify explicitly</span>
-</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>cg<span class="w"> </span>-e<span class="w"> </span>testing<span class="w"> </span>run
-</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>cg<span class="w"> </span>-e<span class="w"> </span>production<span class="w"> </span>status
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># Set active</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>cg<span class="w"> </span>use<span class="w"> </span>my-project
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># Commands use active env by default</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>cg<span class="w"> </span>run
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>cg<span class="w"> </span>status
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>cg<span class="w"> </span>node<span class="w"> </span>add<span class="w"> </span>comfyui-depthflow-nodes
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="c1"># Or specify explicitly</span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>cg<span class="w"> </span>-e<span class="w"> </span>testing<span class="w"> </span>run
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>cg<span class="w"> </span>-e<span class="w"> </span>production<span class="w"> </span>status
 </span></code></pre></div>
 <p>The active environment is stored in <code>workspace/.metadata/workspace.json</code>.</p>
 <h2 id="key-takeaways">Key takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
@@ -4145,7 +4256,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 13, 2025 00:51:10 UTC"><span class="timeago" datetime="2025-11-13T00:51:10+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 13, 2025 00:51:10 UTC">2025-11-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 13, 2025 22:46:11 UTC"><span class="timeago" datetime="2025-11-13T22:46:11+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 13, 2025 22:46:11 UTC">2025-11-13</span>
   </span>
 
     
@@ -4209,13 +4320,13 @@
         
         
           
-          <a href="../migrating-from-v0/" class="md-footer__link md-footer__link--next" aria-label="Next: Migrating from v0.x">
+          <a href="../../user-guide/workspaces/" class="md-footer__link md-footer__link--next" aria-label="Next: Workspaces">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Migrating from v0.x
+                Workspaces
               </div>
             </div>
             <div class="md-footer__button md-icon">
